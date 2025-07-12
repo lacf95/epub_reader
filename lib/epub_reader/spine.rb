@@ -4,14 +4,14 @@ module EpubReader
   class Spine
     include Enumerable
 
-    attr_accessor :spine_items
+    attr_accessor :manifest_items
 
-    def initialize(spine_items: [])
-      @spine_items = spine_items
+    def initialize(manifest_items: [])
+      @manifest_items = manifest_items
     end
 
     def each(&block)
-      spine_items.each(&block)
+      manifest_items.each(&block)
     end
   end
 end

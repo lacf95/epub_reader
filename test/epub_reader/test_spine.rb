@@ -4,20 +4,20 @@ require "test_helper"
 
 class TestSpine < Minitest::Test
   def test_attributes
-    spine = ::EpubReader::Spine.new(spine_items: [])
+    spine = ::EpubReader::Spine.new(manifest_items: [])
 
-    assert_equal [], spine.spine_items
+    assert_equal [], spine.manifest_items
   end
 
   def test_default_attributes
     spine = ::EpubReader::Spine.new
 
-    assert_equal [], spine.spine_items
+    assert_equal [], spine.manifest_items
   end
 
-  def test_each_yields_spine_items
-    spine_item = Struct.new(:id)
-    spine = ::EpubReader::Spine.new(spine_items: [spine_item.new(id: "A"), spine_item.new(id: "B")])
+  def test_each_yields_manifest_items
+    manifest_item = Struct.new(:id)
+    spine = ::EpubReader::Spine.new(manifest_items: [manifest_item.new(id: "A"), manifest_item.new(id: "B")])
 
     result = spine.map(&:id)
 

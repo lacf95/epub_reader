@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module EpubReader
-  class SpineItem
+  class ManifestItem
     attr_accessor :id, :reference, :media_type
 
     def initialize(id: nil, reference: nil, media_type: nil)

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 require_relative "epub_reader/cover"
+require_relative "epub_reader/manifest_item"
 require_relative "epub_reader/metadata"
 require_relative "epub_reader/navigation"
 require_relative "epub_reader/spine"
-require_relative "epub_reader/spine_item"
 require_relative "epub_reader/version"
 
 require_relative "epub_reader/extractors/base"
