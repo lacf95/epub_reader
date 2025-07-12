@@ -27,19 +27,23 @@ module EpubReader
         Zip::File.open(path) do |zip_file|
           # Get the container.xml file to get the opf file path.
           container_file = zip_file.find_entry "META-INF/container.xml"
-          raise ::EpubReader::Error.new("container.xml not found") unless container_file
+          raise ::EpubReader::Error, "container.xml not found" unless container_file
 
           # Read the container file to get opf file path.
           container_doc = Nokogiri::XML(container_file.get_input_stream.read)
-          opf_doc_path = element_at(container_doc, "//container:rootfile")["full-path"]
+          opf_file_path = element_at(container_doc, "//container:rootfile")["full-path"]
 
           # Read the opf file to get metadata.
-          opf_file = zip_file.find_entry opf_doc_path
-          raise ::EpubReader::Error.new("opf file not found") unless opf_file
+          opf_file = zip_file.find_entry opf_file_path
+          raise ::EpubReader::Error, "opf file not found" unless opf_file
 
           opf_doc = Nokogiri::XML(opf_file.get_input_stream.read)
-          yield(opf_doc, opf_doc_path, zip_file) if block_given?
+          yield(opf_doc, opf_file_path, zip_file) if block_given?
         end
+      end
+
+      def as_xml(file)
+        Nokogiri::XML(file.get_input_stream.read)
       end
 
       def element_at(doc, path)
@@ -51,7 +55,7 @@ module EpubReader
       end
 
       def text_at(doc, path)
-        element_at(doc, path)&.text
+        element_at(doc, path)&.text&.strip
       end
     end
   end

@@ -19,5 +19,9 @@ module EpubReader
     def version
       @version ||= ::EpubReader::Extractors::Version.extract(path)
     end
+
+    def navigation
+      @navigation ||= ::EpubReader::Extractors::Navigation.extract(path, version: version)
+    end
   end
 end

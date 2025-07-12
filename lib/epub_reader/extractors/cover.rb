@@ -8,11 +8,11 @@ module EpubReader
       ns_entry :opf, "http://www.idpf.org/2007/opf"
 
       def self.extract(path)
-        open_opf(path) do |opf_doc, opf_doc_path, zip_file|
-          cover_file_name = cover_reference(opf_doc)
+        open_opf(path) do |opf_doc, opf_file_path, zip_file|
+          cover_file_name = cover_reference opf_doc
           return unless cover_file_name
 
-          cover_file_path = File.join(File.dirname(opf_doc_path), cover_file_name)
+          cover_file_path = File.join(File.dirname(opf_file_path), cover_file_name)
           cover_file = zip_file.find_entry cover_file_path
           return unless cover_file
 
