@@ -31,23 +31,27 @@ module EpubReader
 
           # Read the container file to get opf file path.
           container_doc = Nokogiri::XML(container_file.get_input_stream.read)
-          opf_file_path = container_doc.at_xpath("//container:rootfile", ns)["full-path"]
+          opf_doc_path = element_at(container_doc, "//container:rootfile")["full-path"]
 
           # Read the opf file to get metadata.
-          opf_file = zip_file.find_entry opf_file_path
+          opf_file = zip_file.find_entry opf_doc_path
           raise ::EpubReader::Error.new("opf file not found") unless opf_file
 
           opf_doc = Nokogiri::XML(opf_file.get_input_stream.read)
-          yield opf_doc if block_given?
+          yield(opf_doc, opf_doc_path, zip_file) if block_given?
         end
       end
 
-      def text_at(doc, path)
-        doc.at_xpath(path, ns)&.text
+      def element_at(doc, path)
+        doc.at_xpath(path, ns)
       end
 
-      def element_at(doc, path)
+      def elements_at(doc, path)
         doc.xpath(path, ns)
+      end
+
+      def text_at(doc, path)
+        element_at(doc, path)&.text
       end
     end
   end

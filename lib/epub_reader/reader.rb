@@ -11,5 +11,9 @@ module EpubReader
     def metadata
       @metadata ||= ::EpubReader::Extractors::Metadata.extract(path)
     end
+
+    def cover
+      @cover ||= ::EpubReader::Extractors::Cover.extract(path)
+    end
   end
 end
