@@ -3,22 +3,19 @@
 module EpubReader
   module Extractors
     class Cover
-      # ------------------------------------------------------------------------
-      # Extends
-      # ------------------------------------------------------------------------
-      extend EpubReader::Extractors::Base
+      extend ::EpubReader::Extractors::Base
 
       ns_entry :opf, "http://www.idpf.org/2007/opf"
 
       def self.extract(path)
-        open_opf(path) do |opf_doc, opf_doc_path, zip_file|
+        item_href = open_opf(path) do |opf_doc, opf_doc_path, zip_file|
           # Find the cover id otherwise use the default cover
           cover_id = element_at(opf_doc, "//opf:metadata/opf:meta[@name='cover']")&.[]("content")
           item_xpath = if cover_id
-                         "//opf:manifest/opf:item[@id='#{cover_id}']"
-                       else
-                         "//opf:manifest/opf:item[contains(@href, 'cover') and contains(@media-type, 'image')]"
-                       end
+            "//opf:manifest/opf:item[@id='#{cover_id}']"
+          else
+            "//opf:manifest/opf:item[contains(@href, 'cover') and contains(@media-type, 'image')]"
+          end
 
           item_href = element_at(opf_doc, item_xpath)&.[]("href")
           return unless item_href

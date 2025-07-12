@@ -38,7 +38,7 @@ class TestExtractorsBase < Minitest::Test
   def test_text_at
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     DummyExtractor.open_opf(epub_path) do |opf_doc|
-      assert_equal DummyExtractor.text_at(opf_doc, "//dc:title"), "Alice's Adventures in Wonderland"
+      assert_equal "Alice's Adventures in Wonderland", DummyExtractor.text_at(opf_doc, "//dc:title")
     end
   end
 
@@ -52,7 +52,7 @@ class TestExtractorsBase < Minitest::Test
   def test_elements_at
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     DummyExtractor.open_opf(epub_path) do |opf_doc|
-      assert_equal DummyExtractor.elements_at(opf_doc, "//dc:creator").map(&:text), ["Lewis Carroll"]
+      assert_equal ["Lewis Carroll"], DummyExtractor.elements_at(opf_doc, "//dc:creator").map(&:text)
     end
   end
 end

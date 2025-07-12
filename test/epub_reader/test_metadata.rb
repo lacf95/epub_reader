@@ -14,13 +14,13 @@ class TestMetadata < Minitest::Test
       subjects: ["Fantasy"]
     )
 
-    assert_equal metadata.title, "My Book"
-    assert_equal metadata.authors, ["Luis Adrian Chávez Fregoso"]
-    assert_equal metadata.language, "en"
-    assert_equal metadata.publisher, "Adrian's Publishing"
-    assert_equal metadata.description, "Ópera prima from renowed author Adrián"
-    assert_equal metadata.published_at, Date.parse("2023-07-11")
-    assert_equal metadata.subjects, ["Fantasy"]
+    assert_equal "My Book", metadata.title
+    assert_equal ["Luis Adrian Chávez Fregoso"], metadata.authors
+    assert_equal "en", metadata.language
+    assert_equal "Adrian's Publishing", metadata.publisher
+    assert_equal "Ópera prima from renowed author Adrián", metadata.description
+    assert_equal Date.parse("2023-07-11"), metadata.published_at
+    assert_equal ["Fantasy"], metadata.subjects
   end
 
   def test_to_h
@@ -34,7 +34,7 @@ class TestMetadata < Minitest::Test
       subjects: ["Fantasy"]
     )
 
-    assert_equal metadata.to_h, {
+    assert_equal({
       title: "My Book",
       authors: ["Luis Adrian Chávez Fregoso"],
       language: "en",
@@ -42,7 +42,7 @@ class TestMetadata < Minitest::Test
       description: "Ópera prima from renowed author Adrián",
       published_at: Date.parse("2023-07-11"),
       subjects: ["Fantasy"]
-    }
+    }, metadata.to_h)
   end
 
   def test_default_attributes

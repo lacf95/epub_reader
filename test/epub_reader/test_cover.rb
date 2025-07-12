@@ -11,8 +11,8 @@ class TestCover < Minitest::Test
       file: file
     )
 
-    assert_equal cover.name, "file.jpg"
-    assert_equal cover.file, file
-    assert_equal cover.path, file.path
+    assert_equal "file.jpg", cover.name
+    assert_equal file, cover.file
+    assert_equal file.path, cover.path
   end
 end

@@ -6,7 +6,7 @@ class TestExtractorsCover < Minitest::Test
   def test_extract
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     cover = ::EpubReader::Extractors::Cover.extract(epub_path)
-    assert_equal cover.name, "716671940892739718_cover.jpg"
+    assert_equal "716671940892739718_cover.jpg", cover.name
   end
 
   def test_extract_without_cover_reference

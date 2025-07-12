@@ -15,5 +15,9 @@ module EpubReader
     def cover
       @cover ||= ::EpubReader::Extractors::Cover.extract(path)
     end
+
+    def version
+      @version ||= ::EpubReader::Extractors::Version.extract(path)
+    end
   end
 end

@@ -7,7 +7,7 @@ module EpubReader
     class Metadata
       SUBJECT_SEPARATOR = " -- "
 
-      extend EpubReader::Extractors::Base
+      extend ::EpubReader::Extractors::Base
 
       ns_entry :dc, "http://purl.org/dc/elements/1.1/"
 

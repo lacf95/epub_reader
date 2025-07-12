@@ -5,3 +5,5 @@
 ### Added
 - Initial release
 - Reads Metadata from epub files.
+- Reads Cover from epub files.
+- Reads Version from epub files.
