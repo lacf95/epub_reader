@@ -12,6 +12,10 @@ module EpubReader
       @cover ||= ::EpubReader::Extractors::Cover.extract(path)
     end
 
+    def manifest
+      @manifest ||= ::EpubReader::Extractors::Manifest.extract(path)
+    end
+
     def metadata
       @metadata ||= ::EpubReader::Extractors::Metadata.extract(path)
     end

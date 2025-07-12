@@ -10,6 +10,13 @@ class TestReader < Minitest::Test
     assert_instance_of ::EpubReader::Cover, epub.cover
   end
 
+  def test_manifest
+    epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
+    epub = ::EpubReader::Reader.new(path: epub_path)
+
+    assert_instance_of ::EpubReader::Manifest, epub.manifest
+  end
+
   def test_metadata
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     epub = ::EpubReader::Reader.new(path: epub_path)
