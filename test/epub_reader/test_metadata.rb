@@ -23,6 +23,18 @@ class TestMetadata < Minitest::Test
     assert_equal ["Fantasy"], metadata.subjects
   end
 
+  def test_default_attributes
+    metadata = ::EpubReader::Metadata.new
+
+    assert_nil metadata.title
+    assert_equal [], metadata.authors
+    assert_nil metadata.language
+    assert_nil metadata.publisher
+    assert_nil metadata.description
+    assert_nil metadata.published_at
+    assert_equal [], metadata.subjects
+  end
+
   def test_to_h
     metadata = ::EpubReader::Metadata.new(
       title: "My Book",
@@ -43,17 +55,5 @@ class TestMetadata < Minitest::Test
       published_at: Date.parse("2023-07-11"),
       subjects: ["Fantasy"]
     }, metadata.to_h)
-  end
-
-  def test_default_attributes
-    metadata = ::EpubReader::Metadata.new
-
-    assert_nil metadata.title
-    assert_equal [], metadata.authors
-    assert_nil metadata.language
-    assert_nil metadata.publisher
-    assert_nil metadata.description
-    assert_nil metadata.published_at
-    assert_equal [], metadata.subjects
   end
 end

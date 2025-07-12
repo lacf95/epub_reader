@@ -3,13 +3,6 @@
 require "test_helper"
 
 class TestReader < Minitest::Test
-  def test_metadata
-    epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
-    epub = ::EpubReader::Reader.new(path: epub_path)
-
-    assert_instance_of ::EpubReader::Metadata, epub.metadata
-  end
-
   def test_cover
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     epub = ::EpubReader::Reader.new(path: epub_path)
@@ -17,11 +10,11 @@ class TestReader < Minitest::Test
     assert_instance_of ::EpubReader::Cover, epub.cover
   end
 
-  def test_version
+  def test_metadata
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     epub = ::EpubReader::Reader.new(path: epub_path)
 
-    assert_instance_of Float, epub.version
+    assert_instance_of ::EpubReader::Metadata, epub.metadata
   end
 
   def test_navigation
@@ -29,5 +22,19 @@ class TestReader < Minitest::Test
     epub = ::EpubReader::Reader.new(path: epub_path)
 
     assert_instance_of ::EpubReader::Navigation, epub.navigation
+  end
+
+  def test_spine
+    epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
+    epub = ::EpubReader::Reader.new(path: epub_path)
+
+    assert_instance_of ::EpubReader::Spine, epub.spine
+  end
+
+  def test_version
+    epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
+    epub = ::EpubReader::Reader.new(path: epub_path)
+
+    assert_instance_of Float, epub.version
   end
 end

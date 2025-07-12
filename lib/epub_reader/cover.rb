@@ -10,7 +10,7 @@ module EpubReader
     end
 
     def path
-      file.path
+      file&.path
     end
   end
 end

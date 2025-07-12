@@ -15,4 +15,12 @@ class TestCover < Minitest::Test
     assert_equal file, cover.file
     assert_equal file.path, cover.path
   end
+
+  def test_default_attributes
+    cover = ::EpubReader::Cover.new
+
+    assert_nil cover.name
+    assert_nil cover.file
+    assert_nil cover.path
+  end
 end
