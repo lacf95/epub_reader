@@ -11,7 +11,7 @@ class TestExtractorsMetadata < Minitest::Test
   end
 
   def test_extract_without_authors
-    epub_path = "test/fixtures/no_authors.epub"
+    epub_path = "test/fixtures/v3_no_authors.epub"
     metadata = ::EpubReader::Extractors::Metadata.extract(epub_path)
 
     assert_equal [], metadata.authors

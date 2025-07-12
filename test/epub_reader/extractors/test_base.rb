@@ -24,7 +24,7 @@ class TestExtractorsBase < Minitest::Test
   end
 
   def test_raise_error_when_no_container_file_found
-    epub_path = "test/fixtures/no_container_file.epub"
+    epub_path = "test/fixtures/v3_no_container_file.epub"
 
     assert_raises ::EpubReader::Error do
       DummyExtractor.open_opf(epub_path)
@@ -32,7 +32,7 @@ class TestExtractorsBase < Minitest::Test
   end
 
   def test_raise_error_when_no_content_file_found
-    epub_path = "test/fixtures/no_content_file.epub"
+    epub_path = "test/fixtures/v3_no_content_file.epub"
 
     assert_raises ::EpubReader::Error do
       DummyExtractor.open_opf(epub_path)

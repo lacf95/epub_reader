@@ -11,21 +11,21 @@ class TestExtractorsCover < Minitest::Test
   end
 
   def test_extract_without_cover_reference
-    epub_path = "test/fixtures/no_cover_reference.epub"
+    epub_path = "test/fixtures/v3_no_cover_reference.epub"
     cover = ::EpubReader::Extractors::Cover.extract(epub_path)
 
     assert_nil cover
   end
 
   def test_extract_with_cover_reference_and_no_file
-    epub_path = "test/fixtures/cover_id_reference.epub"
+    epub_path = "test/fixtures/v3_cover_id_reference_and_no_file.epub"
     cover = ::EpubReader::Extractors::Cover.extract(epub_path)
 
     assert_nil cover
   end
 
   def test_extract_without_cover_file
-    epub_path = "test/fixtures/no_cover.epub"
+    epub_path = "test/fixtures/v3_no_cover.epub"
     cover = ::EpubReader::Extractors::Cover.extract(epub_path)
 
     assert_nil cover
