@@ -13,7 +13,11 @@ module EpubReader
     end
 
     def cover
-      @cover ||= ::EpubReader::Extractors::Cover.extract(path)
+      ::EpubReader::Extractors::Binary.extract(path, cover_reference)
+    end
+
+    def cover_reference
+      @cover_reference ||= ::EpubReader::Extractors::CoverReference.extract(path)
     end
 
     def manifest
