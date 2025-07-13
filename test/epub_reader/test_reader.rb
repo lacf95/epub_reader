@@ -7,7 +7,7 @@ class TestReader < Minitest::Test
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     epub = ::EpubReader::Reader.new(path: epub_path)
 
-    assert_instance_of Tempfile, epub.cover
+    assert_instance_of ::EpubReader::ManifestItem, epub.cover
   end
 
   def test_cover_reference

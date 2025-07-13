@@ -8,7 +8,7 @@ module EpubReader
       def self.extract(path, reference)
         open_opf(path) do |_opf_doc, opf_file_path, zip_file|
           content_file_name, content_fragment = reference.split("#", 2)
-          content_file_path = File.join(File.dirname(opf_file_path), content_file_name)
+          content_file_path = ::File.join(::File.dirname(opf_file_path), content_file_name)
           content_file = zip_file.find_entry(content_file_path)
           raise ::EpubReader::Error, "#{content_file_name} not found" unless content_file
 

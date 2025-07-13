@@ -11,7 +11,7 @@ module EpubReader
 
       def self.extract(path)
         open_opf(path) do |opf_doc, opf_file_path, zip_file|
-          nav_file_path = File.join(File.dirname(opf_file_path), nav_reference(opf_doc))
+          nav_file_path = ::File.join(::File.dirname(opf_file_path), nav_reference(opf_doc))
           nav_file = zip_file.find_entry nav_file_path
           raise ::EpubReader::Error, "nav file not found" unless nav_file
 

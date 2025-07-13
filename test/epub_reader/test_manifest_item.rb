@@ -23,6 +23,17 @@ class TestManifestItem < Minitest::Test
     assert_nil manifest_item.media_type
   end
 
+  def test_file
+    manifest_item = ::EpubReader::ManifestItem.new(
+      id: "id-8980823985225580435",
+      reference: "716671940892739718_cover.jpg",
+      media_type: "image/jpeg",
+      path: "test/fixtures/alices_adventures_in_wonderland.epub"
+    )
+
+    assert_instance_of Tempfile, manifest_item.file
+  end
+
   def test_to_h
     manifest_item = ::EpubReader::ManifestItem.new(
       id: "A",

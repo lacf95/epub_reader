@@ -2,13 +2,13 @@
 
 require "test_helper"
 
-class TestExtractorsBinary < Minitest::Test
+class TestExtractorsFile < Minitest::Test
   def test_extract
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     reference = "716671940892739718_cover.jpg"
-    binary = ::EpubReader::Extractors::Binary.extract(epub_path, reference)
+    file = ::EpubReader::Extractors::File.extract(epub_path, reference)
 
-    assert_instance_of Tempfile, binary
+    assert_instance_of Tempfile, file
   end
 
   def test_extract_without_matching_file
@@ -16,7 +16,7 @@ class TestExtractorsBinary < Minitest::Test
     reference = "no_matching.jpg"
 
     assert_raises ::EpubReader::Error do
-      ::EpubReader::Extractors::Binary.extract(epub_path, reference)
+      ::EpubReader::Extractors::File.extract(epub_path, reference)
     end
   end
 end

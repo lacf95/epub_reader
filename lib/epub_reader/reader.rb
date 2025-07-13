@@ -13,7 +13,7 @@ module EpubReader
     end
 
     def cover
-      ::EpubReader::Extractors::Binary.extract(path, cover_reference)
+      manifest.find { |manifest_item| manifest_item.reference == cover_reference }
     end
 
     def cover_reference

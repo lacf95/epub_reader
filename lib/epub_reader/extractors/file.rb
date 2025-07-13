@@ -2,18 +2,18 @@
 
 module EpubReader
   module Extractors
-    class Binary
+    class File
       extend ::EpubReader::Extractors::Base
 
       ns_entry :opf, "http://www.idpf.org/2007/opf"
 
       def self.extract(path, reference)
         open_opf(path) do |_opf_doc, opf_file_path, zip_file|
-          file_path = File.join(File.dirname(opf_file_path), reference)
+          file_path = ::File.join(::File.dirname(opf_file_path), reference)
           file = zip_file.find_entry file_path
           raise ::EpubReader::Error, "#{reference} file not found" unless file
 
-          file_basename = File.basename file_path
+          file_basename = ::File.basename file_path
           copy_to_temp_file(file, file_basename)
         end
       end

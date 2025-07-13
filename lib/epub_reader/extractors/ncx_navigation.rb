@@ -10,7 +10,7 @@ module EpubReader
 
       def self.extract(path)
         open_opf(path) do |opf_doc, opf_file_path, zip_file|
-          toc_file_path = File.join(File.dirname(opf_file_path), toc_reference(opf_doc))
+          toc_file_path = ::File.join(::File.dirname(opf_file_path), toc_reference(opf_doc))
           toc_file = zip_file.find_entry toc_file_path
           raise ::EpubReader::Error, "toc file not found" unless toc_file
 

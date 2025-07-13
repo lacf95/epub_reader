@@ -8,7 +8,7 @@ require_relative "epub_reader/spine"
 require_relative "epub_reader/version"
 
 require_relative "epub_reader/extractors/base"
-require_relative "epub_reader/extractors/binary"
+require_relative "epub_reader/extractors/file"
 require_relative "epub_reader/extractors/content"
 require_relative "epub_reader/extractors/cover_reference"
 require_relative "epub_reader/extractors/manifest"
