@@ -1,17 +1,17 @@
-# EpubReader
+# EpubWorm
 
-EpubReader is just another EPUB parser gem, with only two dependencies: "rubyzip" and "nokogiri".
+EpubWorm is just another EPUB parser gem, with only two dependencies: "rubyzip" and "nokogiri".
 
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add epub_reader
+    $ bundle add epub_worm
 
 Or add this line to your Gemfile:
 
 ```ruby
-gem "epub_reader"
+gem "epub_worm"
 ```
 
 And run
@@ -20,16 +20,16 @@ And run
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install epub_reader
+    $ gem install epub_worm
 
 ## Usage
 
 To read EPUB files:
 
 ```ruby
-require "epub_reader"
+require "epub_worm"
 
-epub = EpubReader::Reader.new(path: "your_file.epub")
+epub = EpubWorm::Reader.new(path: "your_file.epub")
 ```
 
 ### Metadata
@@ -118,7 +118,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/lacf95/epub_reader. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/lacf95/epub_reader/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/lacf95/epub_worm. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/lacf95/epub_worm/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -126,4 +126,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the EpubReader project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/lacf95/epub_reader/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the EpubWorm project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/lacf95/epub_worm/blob/master/CODE_OF_CONDUCT.md).
