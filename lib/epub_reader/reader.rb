@@ -8,6 +8,10 @@ module EpubReader
       @path = path
     end
 
+    def content(reference)
+      ::EpubReader::Extractors::Content.extract(path, reference)
+    end
+
     def cover
       @cover ||= ::EpubReader::Extractors::Cover.extract(path)
     end

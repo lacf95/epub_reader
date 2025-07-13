@@ -10,6 +10,14 @@ class TestReader < Minitest::Test
     assert_instance_of ::EpubReader::Cover, epub.cover
   end
 
+  def test_content
+    epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
+    reference = "2400617320698039998_11-h-1.htm.xhtml#pgepubid00003"
+    epub = ::EpubReader::Reader.new(path: epub_path)
+
+    assert_instance_of Nokogiri::XML::Element, epub.content(reference)
+  end
+
   def test_manifest
     epub_path = "test/fixtures/alices_adventures_in_wonderland.epub"
     epub = ::EpubReader::Reader.new(path: epub_path)

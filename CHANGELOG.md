@@ -10,3 +10,4 @@
 - Reads Navigation from epub files.
 - Reads Spine from epub files.
 - Reads Manifest from epub files.
+- Reads Content from epub files.
