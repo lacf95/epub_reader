@@ -10,23 +10,24 @@ module EpubReader
       def self.extract(path)
         open_opf(path) do |opf_doc|
           spine_items = elements_at(opf_doc, "//opf:spine/opf:itemref")
-          build_spine(spine_items, opf_doc)
+          build_spine(spine_items, opf_doc, path)
         end
       end
 
-      def self.build_spine(spine_items, opf_doc)
+      def self.build_spine(spine_items, opf_doc, path)
         ::EpubReader::Spine.new(
-          manifest_items: spine_items.map { |e| as_manifest_item(e, opf_doc) }
+          manifest_items: spine_items.map { |e| as_manifest_item(e, opf_doc, path) }
         )
       end
 
-      def self.as_manifest_item(spine_entry, opf_doc)
+      def self.as_manifest_item(spine_entry, opf_doc, path)
         id_reference = spine_entry["idref"]
         manifest_entry = element_at(opf_doc, "//opf:manifest/opf:item[@id='#{id_reference}']")
         ::EpubReader::ManifestItem.new(
           id: manifest_entry["id"],
           reference: manifest_entry["href"],
-          media_type: manifest_entry["media-type"]
+          media_type: manifest_entry["media-type"],
+          path: path
         )
       end
 
